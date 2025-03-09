@@ -1,12 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const disponibiliteRoutes = require('./routes/disponibiliteRoutes');
 require('dotenv').config();
 
 const app = express();
 
 // Middleware pour parser le JSON
 app.use(express.json());
+
+
+app.use('/api', disponibiliteRoutes);
 
 
 mongoose.connect(process.env.MONGODB_URI)
